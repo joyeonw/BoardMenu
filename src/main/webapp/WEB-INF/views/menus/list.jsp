@@ -38,7 +38,7 @@
 				<td>Menu_name</td>
 				<td>Menu_seq</td>
 				<td>삭제</td>
-				<td>등록</td>
+				<td>등록 </td>
 			</tr>
 			<tr>
 				<td colspan="5">
