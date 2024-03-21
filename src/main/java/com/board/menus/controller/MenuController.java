@@ -46,6 +46,8 @@ public class MenuController {
 		return "menus/write"; //  /WEB-INF/views/ + menus/write + .jsp
    	}
 	
+	// -------------------------
+	
 	
 	// 메뉴 저장
 	// /Menus/Write?menu_id=&menu_name=&menu_seq=
@@ -60,6 +62,27 @@ public class MenuController {
 //		return "menus/list"; // menus/list. jsp
 	}
 	
+	// ---------------------------------------
+	//  /Menus/WriteForm2
+	@RequestMapping("WriteForm2")
+	public String WriteForm2() {
+		return "menus/write2";
+	}
+	
+	@RequestMapping("/Write2")
+	public String write2( MenuVo menuVo, Model model ) {
+		// 저장
+		menuMapper.insertMenuByName( menuVo );
+		// 조회
+		//
+		return "redirect:/Menus/List";
+	}
+	
+	
+	
+	
+	
+	// ---------------------------------------
 	// 메뉴 삭제 //Menus/Delete?menu_id=MENU03
 		@RequestMapping("/Delete")
 		@ResponseBody
