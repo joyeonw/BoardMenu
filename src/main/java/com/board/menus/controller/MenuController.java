@@ -33,6 +33,7 @@ public class MenuController {
 		// 조회 결과를 넘겨준다 ( Model )
 		model.addAttribute( "menuList", menuList );
 		
+		
 		return "menus/list";
 	}
 	
@@ -48,9 +49,30 @@ public class MenuController {
 	// 메뉴 저장
 	// /Menus/Write?menu_id=&menu_name=&menu_seq=
 	@RequestMapping("/Write")
-	public String write( MenuVo menuVo ) {
+	public String write( MenuVo menuVo, Model model ) {
+		
 		menuMapper.insertMenu( menuVo );
-		return "menus/list"; // menus/list. jsp
+		return "redirect:/Menus/List";
+//		List<MenuVo> menuList = menuMapper.getMenuList();
+//		model.addAttribute("menuList", menuList);
+//		
+//		return "menus/list"; // menus/list. jsp
+	}
+	
+	// 메뉴 삭제 //Menus/Delete?menu_id=MENU03
+	@RequestMapping("/Delete")
+	public String delete( MenuVo menuVo, Model model) {
+		
+		// MENU을 삭제
+		menuMapper.deleteMenu( menuVo );
+		
+		return "redirect:/Menus/List";
+		// 다시 조회해서 model에 담는다
+//		List<MenuVo> menuList = menuMapper.getMenuList();
+//		model.addAttribute("menuList", menuList);
+		
+		// 이동할 파일
+//		return "menus/list";
 	}
 	
 	

@@ -16,7 +16,7 @@
 
   </insert>
   
-  <select id="getMenuList">
+  <select id="getMenuList" resultType="com.board.menus.domain.MenuVo">
   SELECT   MENU_ID,
 				   MENU_NAME,
 				   MENU_SEQ
@@ -24,5 +24,11 @@
   ORDER BY MENU_SEQ ASC
   
   </select>
+  
+  <delete id="deleteMenu">
+  	DELETE FROM MENUS
+  	WHERE MENU_ID = #{ menu_id }
+  </delete>
+  
   
 </mapper>
