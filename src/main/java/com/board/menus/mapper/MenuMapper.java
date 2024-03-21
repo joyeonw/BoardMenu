@@ -22,6 +22,8 @@ public interface MenuMapper {
 
 	void insertMenuByName(MenuVo menuVo);
 
+	void updateMenu(MenuVo menuVo);
+
 	
 	
 }

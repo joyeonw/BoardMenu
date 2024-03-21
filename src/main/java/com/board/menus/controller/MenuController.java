@@ -80,15 +80,13 @@ public class MenuController {
 	
 	
 	
-	
-	
 	// ---------------------------------------
 	// 메뉴 삭제 //Menus/Delete?menu_id=MENU03
 		@RequestMapping("/Delete")
 		@ResponseBody
-		public String delete( MenuVo menuvo ) {
+		public String delete( MenuVo menuVo ) {
 			
-			menuMapper.deleteMenu(menuvo);
+			menuMapper.deleteMenu(menuVo);
 			
 			String html = "<script>";
 			html	   += "alert('삭제되었습니다');";
@@ -114,7 +112,29 @@ public class MenuController {
 //		return "menus/list";
 	}
 	*/
+	// -----------------------------------
+	// MENU 수정
+	// -----------------------------------
 	
+	///Menus/UpdateForm?menu_id=${menu.menu_id}
+	@RequestMapping("/UpdateForm")
+	public String updateForm( MenuVo menuVo ) {
+		
+		// 수정할 데이터를 menu_id 조회
+		
+		// 조회한 내용을 모델에 담는다
+		return  "/menus/update";
+	}
 	
+	// /Menus/Update
+	@RequestMapping("/Update")
+	public String update ( MenuVo menuVo ) {
+		// 수정
+		
+		menuMapper.updateMenu(menuVo);
+		
+		// 수정 후 조회
+		return "redirect:/Menus/List";
+	}
 	
 }
